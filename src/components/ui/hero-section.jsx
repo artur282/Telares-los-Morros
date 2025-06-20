@@ -34,7 +34,7 @@ const HeroContent = ({
 }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -43,7 +43,7 @@ const HeroContent = ({
           className="text-center lg:text-left"
         >
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text-main mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text-main mb-4 lg:mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -52,7 +52,7 @@ const HeroContent = ({
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-primary-green font-medium mb-4"
+            className="text-lg sm:text-xl md:text-2xl text-primary-green font-medium mb-3 lg:mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -61,7 +61,7 @@ const HeroContent = ({
           </motion.p>
 
           <motion.p
-            className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0"
+            className="text-base sm:text-lg text-gray-600 mb-6 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -76,11 +76,11 @@ const HeroContent = ({
           >
             <button
               onClick={ctaAction}
-              className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-primary-green rounded-lg hover:bg-green-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-primary-green rounded-lg hover:bg-green-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl min-h-[44px]"
             >
               {ctaText}
               <svg
-                className="ml-2 w-5 h-5"
+                className="ml-2 w-4 h-4 sm:w-5 sm:h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -101,9 +101,9 @@ const HeroContent = ({
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative"
+          className="relative mt-8 lg:mt-0"
         >
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {images.slice(0, 4).map((image, index) => (
               <motion.div
                 key={index}
@@ -116,7 +116,9 @@ const HeroContent = ({
                 }}
                 className={cn(
                   "relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300",
-                  index === 0 ? "col-span-2 h-48" : "h-32"
+                  index === 0
+                    ? "col-span-2 h-32 sm:h-40 lg:h-48"
+                    : "h-24 sm:h-28 lg:h-32"
                 )}
               >
                 <img
@@ -125,7 +127,7 @@ const HeroContent = ({
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                <div className="absolute bottom-2 left-2 text-white text-sm font-medium">
+                <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 text-white text-xs sm:text-sm font-medium">
                   {image.title}
                 </div>
               </motion.div>

@@ -88,3 +88,35 @@ h6 {
 .bg-light {
   background-color: #f8f9fa;
 }
+
+/* Responsive utilities */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Ensure text is readable on all devices */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  /* Improve button accessibility on mobile */
+  button,
+  .btn,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improve focus visibility for accessibility */
+*:focus-visible {
+  outline: 2px solid #28a745;
+  outline-offset: 2px;
+}

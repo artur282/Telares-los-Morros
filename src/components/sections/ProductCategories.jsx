@@ -55,7 +55,7 @@ const ProductCategories = () => {
   ];
 
   return (
-    <section className="py-20 bg-bg-light">
+    <section className="py-12 sm:py-16 lg:py-20 bg-bg-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -63,12 +63,12 @@ const ProductCategories = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-main mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-main mb-4 leading-tight">
             Nuestras Especialidades
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-body">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-body leading-relaxed">
             Ofrecemos una amplia gama de uniformes y textiles especializados
             para satisfacer las necesidades específicas de cada industria y
             profesión.
@@ -91,19 +91,19 @@ const ProductCategories = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-8 sm:mt-12 lg:mt-16"
         >
-          <p className="text-lg text-gray-600 mb-8 font-body">
+          <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 font-body leading-relaxed">
             ¿No encuentras lo que buscas? Contáctanos para soluciones
             personalizadas.
           </p>
           <button
             onClick={() => navigate("/catalog")}
-            className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-primary-green rounded-lg hover:bg-green-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-primary-green rounded-lg hover:bg-green-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl min-h-[44px]"
           >
             Ver Catálogo Completo
             <svg
-              className="ml-2 w-5 h-5"
+              className="ml-2 w-4 h-4 sm:w-5 sm:h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
