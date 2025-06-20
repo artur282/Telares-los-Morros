@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&family=Dancing+Script:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Lato", "Open Sans", system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #343a40;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* CSS Variables for shadcn components */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 142 76% 36%; /* #28a745 converted to HSL */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 98%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 98%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 45 100% 51%; /* #ffc107 converted to HSL */
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 142 76% 36%;
+  --radius: 0.5rem;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", "Open Sans", system-ui, sans-serif;
+  color: #343a40;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", "Poppins", sans-serif;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.font-script {
+  font-family: "Dancing Script", cursive;
+}
+
+/* Brand color utilities */
+.text-primary-green {
+  color: #28a745;
+}
+
+.bg-primary-green {
+  background-color: #28a745;
+}
+
+.text-accent-yellow {
+  color: #ffc107;
+}
+
+.bg-accent-yellow {
+  background-color: #ffc107;
+}
+
+.text-main {
+  color: #343a40;
+}
+
+.bg-light {
+  background-color: #f8f9fa;
+}
