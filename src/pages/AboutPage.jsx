@@ -64,7 +64,7 @@ const AboutPage = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-primary-green to-green-600 text-white overflow-hidden">
+        <section className="relative pt-24 pb-20 bg-gradient-to-br from-primary-green to-green-600 text-white overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
@@ -72,10 +72,10 @@ const AboutPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6 leading-tight">
                 Nuestra Historia
               </h1>
-              <p className="text-xl md:text-2xl font-body max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl font-body max-w-3xl mx-auto leading-relaxed">
                 Más de 15 años creando uniformes de calidad excepcional,
                 construyendo relaciones duraderas con nuestros clientes.
               </p>
@@ -84,15 +84,15 @@ const AboutPage = () => {
         </section>
 
         {/* Mission & Vision */}
-        <section className="py-20 bg-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-bg-light rounded-2xl p-8"
+                className="bg-bg-light rounded-2xl p-6 sm:p-8"
               >
                 <div className="w-16 h-16 bg-primary-green rounded-full flex items-center justify-center mb-6">
                   <svg
@@ -119,7 +119,7 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-bg-light rounded-2xl p-8"
+                className="bg-bg-light rounded-2xl p-6 sm:p-8"
               >
                 <div className="w-16 h-16 bg-accent-yellow rounded-full flex items-center justify-center mb-6">
                   <svg
@@ -145,7 +145,7 @@ const AboutPage = () => {
         </section>
 
         {/* Timeline */}
-        <section className="py-20 bg-bg-light">
+        <section className="py-12 sm:py-16 lg:py-20 bg-bg-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -164,7 +164,11 @@ const AboutPage = () => {
             </motion.div>
 
             <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-primary-green"></div>
+              {/* Desktop Timeline Line */}
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-primary-green"></div>
+
+              {/* Mobile Timeline Line */}
+              <div className="md:hidden absolute left-8 w-1 h-full bg-primary-green"></div>
 
               {milestones.map((milestone, index) => (
                 <motion.div
@@ -173,12 +177,28 @@ const AboutPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`relative flex items-center mb-12 ${
-                    index % 2 === 0 ? "justify-start" : "justify-end"
-                  }`}
+                  className={`relative flex items-center mb-8 sm:mb-12 ${
+                    index % 2 === 0 ? "md:justify-start" : "md:justify-end"
+                  } justify-start`}
                 >
+                  {/* Mobile Layout */}
+                  <div className="md:hidden w-full pl-16">
+                    <div className="bg-white rounded-lg p-4 sm:p-6 shadow-lg">
+                      <div className="text-xl sm:text-2xl font-heading font-bold text-primary-green mb-2">
+                        {milestone.year}
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-heading font-semibold text-text-main mb-2">
+                        {milestone.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600 font-body">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Desktop Layout */}
                   <div
-                    className={`w-5/12 ${
+                    className={`hidden md:block w-5/12 ${
                       index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"
                     }`}
                   >
@@ -195,7 +215,8 @@ const AboutPage = () => {
                     </div>
                   </div>
 
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-green rounded-full border-4 border-white"></div>
+                  {/* Timeline Dots */}
+                  <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-green rounded-full border-4 border-white"></div>
                 </motion.div>
               ))}
             </div>
@@ -203,7 +224,7 @@ const AboutPage = () => {
         </section>
 
         {/* Team Section */}
-        <section className="py-20 bg-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -221,7 +242,7 @@ const AboutPage = () => {
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={member.name}
@@ -235,7 +256,7 @@ const AboutPage = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-48 h-48 rounded-full mx-auto object-cover shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+                      className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full mx-auto object-cover shadow-lg group-hover:shadow-xl transition-shadow duration-300"
                     />
                   </div>
                   <h3 className="text-xl font-heading font-semibold text-text-main mb-2">
@@ -254,7 +275,7 @@ const AboutPage = () => {
         </section>
 
         {/* Values Section */}
-        <section className="py-20 bg-gradient-to-br from-primary-green to-green-600 text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-green to-green-600 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -265,7 +286,7 @@ const AboutPage = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-8">
                 Nuestros Valores
               </h2>
-              <div className="grid md:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
                 {[
                   { title: "Calidad", icon: "⭐" },
                   { title: "Innovación", icon: "💡" },

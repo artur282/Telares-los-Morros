@@ -8,7 +8,7 @@ const HeroSection = ({ children, className }) => {
   return (
     <section
       className={cn(
-        "relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-bg-light to-white",
+        "relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-bg-light to-white pt-16 sm:pt-20",
         className
       )}
     >
@@ -33,14 +33,14 @@ const HeroContent = ({
   images = [],
 }) => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-8rem)]">
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center lg:text-left"
+          className="text-center lg:text-left flex flex-col justify-center"
         >
           <motion.h1
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text-main mb-4 lg:mb-6 leading-tight"

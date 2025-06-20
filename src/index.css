@@ -120,3 +120,39 @@ html {
   outline: 2px solid #28a745;
   outline-offset: 2px;
 }
+
+/* Fix viewport height issues on mobile browsers */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for modern browsers */
+}
+
+/* Ensure proper spacing for fixed header */
+.page-content {
+  padding-top: 4rem; /* 64px for header height */
+}
+
+@media (min-width: 640px) {
+  .page-content {
+    padding-top: 5rem; /* 80px for larger header on bigger screens */
+  }
+}
+
+/* Improve text rendering on mobile */
+@media (max-width: 640px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  p {
+    line-height: 1.6;
+    word-wrap: break-word;
+  }
+}

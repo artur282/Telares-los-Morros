@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
@@ -22,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-200">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -74,7 +75,7 @@ const Header = () => {
             <button
               type="button"
               onClick={toggleMobileMenu}
-              className="text-text-main hover:text-primary-green focus:outline-none focus:text-primary-green p-2"
+              className="relative text-text-main hover:text-primary-green focus:outline-none focus:text-primary-green p-2 rounded-md hover:bg-gray-100 transition-colors duration-200 z-[110]"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -125,7 +126,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden"
+            className="md:hidden overflow-hidden z-[90]"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg">
               {navItems.map((item, index) => (
