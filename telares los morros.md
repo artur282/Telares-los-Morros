@@ -11,7 +11,7 @@ El objetivo es desarrollar las vistas front-end para una aplicación web para la
 
   * **Librería Principal:** `React`
   * **Framework de Estilos:** `Tailwind CSS`
-  * **Componentes de UI:** `Aceternity UI` (para componentes pre-construidos y estéticos)
+  * **Componentes de UI:** `Aceternity UI` 
   * **Animaciones:** `Framer Motion` 
 
 ### 3\. Identidad Visual y Branding
