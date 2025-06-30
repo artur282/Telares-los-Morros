@@ -1,16 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700;800&family=Dancing+Script:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: "Lato", "Open Sans", system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light;
-  color: #343a40;
+  color: #424242;
   background-color: #ffffff;
 
   font-synthesis: none;
@@ -18,33 +18,33 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* CSS Variables for shadcn components */
+  /* Telares Los Morros CSS Variables */
   --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --foreground: 0 0% 26%;
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card-foreground: 0 0% 26%;
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 142 76% 36%; /* #28a745 converted to HSL */
+  --popover-foreground: 0 0% 26%;
+  --primary: 122 39% 49%; /* #4CAF50 Verde Principal */
   --primary-foreground: 0 0% 100%;
-  --secondary: 210 40% 98%;
-  --secondary-foreground: 222.2 84% 4.9%;
-  --muted: 210 40% 98%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 45 100% 51%; /* #ffc107 converted to HSL */
-  --accent-foreground: 222.2 84% 4.9%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 142 76% 36%;
+  --secondary: 122 56% 25%; /* #2E7D32 Verde Oscuro */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 96%; /* #F5F5F5 Gris Claro */
+  --muted-foreground: 0 0% 26%;
+  --accent: 36 100% 50%; /* #FF9800 Naranja */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 4 90% 58%; /* #F44336 Rojo */
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 122 39% 49%;
   --radius: 0.5rem;
 }
 
 body {
   margin: 0;
-  font-family: "Lato", "Open Sans", system-ui, sans-serif;
-  color: #343a40;
+  font-family: "Inter", system-ui, sans-serif;
+  color: #424242;
   background-color: #ffffff;
   min-height: 100vh;
 }
@@ -55,38 +55,50 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Poppins", sans-serif;
+  font-family: "Poppins", "Inter", sans-serif;
   font-weight: 600;
-  color: #343a40;
+  color: #424242;
 }
 
-.font-script {
-  font-family: "Dancing Script", cursive;
-}
-
-/* Brand color utilities */
+/* Telares Los Morros Brand Colors */
 .text-primary-green {
-  color: #28a745;
+  color: #4caf50;
 }
 
 .bg-primary-green {
-  background-color: #28a745;
+  background-color: #4caf50;
 }
 
-.text-accent-yellow {
-  color: #ffc107;
+.text-secondary-green {
+  color: #2e7d32;
 }
 
-.bg-accent-yellow {
-  background-color: #ffc107;
+.bg-secondary-green {
+  background-color: #2e7d32;
 }
 
-.text-main {
-  color: #343a40;
+.text-accent-orange {
+  color: #ff9800;
 }
 
-.bg-light {
-  background-color: #f8f9fa;
+.bg-accent-orange {
+  background-color: #ff9800;
+}
+
+.text-accent-blue {
+  color: #2196f3;
+}
+
+.bg-accent-blue {
+  background-color: #2196f3;
+}
+
+.text-accent-brown {
+  color: #8d6e63;
+}
+
+.bg-accent-brown {
+  background-color: #8d6e63;
 }
 
 /* Responsive utilities */
@@ -117,7 +129,7 @@ html {
 
 /* Improve focus visibility for accessibility */
 *:focus-visible {
-  outline: 2px solid #28a745;
+  outline: 2px solid #4caf50;
   outline-offset: 2px;
 }
 

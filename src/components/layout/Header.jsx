@@ -1,181 +1,271 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import {
+  IconBell,
+  IconUser,
+  IconLogout,
+  IconSettings,
+  IconChevronDown,
+  IconMenu2,
+} from "@tabler/icons-react";
+import Logo from "../ui/Logo";
+import { cn } from "../../lib/utils";
 
-const Header = () => {
-  const location = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Header = ({ onMenuToggle, user = null }) => {
+  const navigate = useNavigate();
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const mockUser = user || {
+    name: "Juan Pérez",
+    email: "juan.perez@telareslosmorros.com",
+    role: "Supervisor",
+    branch: "Villa de Cura",
+    avatar: null,
   };
 
-  const navItems = [
-    { name: "Inicio", path: "/" },
-    { name: "Catálogo", path: "/catalog" },
-    { name: "Nosotros", path: "/about" },
-    { name: "Contacto", path: "/contact" },
+  const notifications = [
+    {
+      id: 1,
+      title: "Conexión restaurada",
+      message: "La conexión con Maracay se ha restablecido",
+      time: "Hace 5 min",
+      type: "success",
+    },
+    {
+      id: 2,
+      title: "Respaldo completado",
+      message: "Respaldo automático finalizado exitosamente",
+      time: "Hace 1 hora",
+      type: "info",
+    },
+    {
+      id: 3,
+      title: "Mantenimiento programado",
+      message: "Mantenimiento del servidor el domingo a las 2:00 AM",
+      time: "Hace 2 horas",
+      type: "warning",
+    },
   ];
 
-  const isActive = (path) => {
-    return location.pathname === path;
+  const dropdownVariants = {
+    initial: { opacity: 0, y: -10, scale: 0.95 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.2,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      scale: 0.95,
+      transition: {
+        duration: 0.15,
+        ease: "easeIn",
+      },
+    },
+  };
+
+  const getNotificationIcon = (type) => {
+    const baseClasses = "w-2 h-2 rounded-full";
+    switch (type) {
+      case "success":
+        return <div className={`${baseClasses} bg-green-500`} />;
+      case "warning":
+        return <div className={`${baseClasses} bg-yellow-500`} />;
+      case "error":
+        return <div className={`${baseClasses} bg-red-500`} />;
+      default:
+        return <div className={`${baseClasses} bg-blue-500`} />;
+    }
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] bg-white shadow-sm border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
-              <img
-                src="/logo.jpeg"
-                alt="Uniformes Los Morros"
-                className="h-10 w-auto"
-              />
-            </Link>
-          </div>
-
-          {/* Navigation Links - Center */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`px-3 py-2 text-sm font-medium font-body transition-colors duration-200 ${
-                  isActive(item.path)
-                    ? "text-primary-green border-b-2 border-primary-green"
-                    : "text-text-main hover:text-primary-green"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Authentication Buttons - Right (Desktop) */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/login"
-              className="px-4 py-2 text-sm font-medium font-body text-primary-green border border-primary-green rounded-md hover:bg-primary-green hover:text-white transition-colors duration-200"
-            >
-              Iniciar Sesión
-            </Link>
-            <Link
-              to="/register"
-              className="px-4 py-2 text-sm font-medium font-body text-white bg-primary-green rounded-md hover:bg-green-600 transition-colors duration-200"
-            >
-              Registrarse
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Left side - Logo and menu toggle */}
+          <div className="flex items-center space-x-4">
             <button
-              type="button"
-              onClick={toggleMobileMenu}
-              className="relative text-text-main hover:text-primary-green focus:outline-none focus:text-primary-green p-2 rounded-md hover:bg-gray-100 transition-colors duration-200 z-[110]"
-              aria-label="Toggle menu"
-              aria-expanded={isMobileMenuOpen}
+              onClick={onMenuToggle}
+              className="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 transition-colors"
             >
-              <motion.div
-                animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                {isMobileMenuOpen ? (
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                )}
-              </motion.div>
+              <IconMenu2 className="h-6 w-6" />
             </button>
+
+            <Logo size="sm" showText={true} animated={false} />
+
+            <div className="hidden sm:block">
+              <nav className="flex space-x-1">
+                <span className="text-sm text-gray-500">Sistema Cloud</span>
+                <span className="text-sm text-gray-300">•</span>
+                <span className="text-sm font-medium text-primary-600">
+                  Dashboard
+                </span>
+              </nav>
+            </div>
+          </div>
+
+          {/* Right side - Notifications and user menu */}
+          <div className="flex items-center space-x-4">
+            {/* Notifications */}
+            <div className="relative">
+              <motion.button
+                onClick={() => setShowNotifications(!showNotifications)}
+                className="p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 rounded-full transition-colors relative"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <IconBell className="h-6 w-6" />
+                {notifications.length > 0 && (
+                  <motion.span
+                    className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  >
+                    {notifications.length}
+                  </motion.span>
+                )}
+              </motion.button>
+
+              <AnimatePresence>
+                {showNotifications && (
+                  <motion.div
+                    className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2"
+                    variants={dropdownVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <div className="px-4 py-2 border-b border-gray-100">
+                      <h3 className="text-sm font-semibold text-gray-900">
+                        Notificaciones
+                      </h3>
+                    </div>
+                    <div className="max-h-64 overflow-y-auto">
+                      {notifications.map((notification) => (
+                        <motion.div
+                          key={notification.id}
+                          className="px-4 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
+                          whileHover={{ x: 5 }}
+                        >
+                          <div className="flex items-start space-x-3">
+                            {getNotificationIcon(notification.type)}
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-medium text-gray-900 truncate">
+                                {notification.title}
+                              </p>
+                              <p className="text-sm text-gray-500 mt-1">
+                                {notification.message}
+                              </p>
+                              <p className="text-xs text-gray-400 mt-1">
+                                {notification.time}
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                    <div className="px-4 py-2 border-t border-gray-100">
+                      <button className="text-sm text-primary-600 hover:text-primary-700 font-medium">
+                        Ver todas las notificaciones
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* User menu */}
+            <div className="relative">
+              <motion.button
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-medium text-white">
+                      {mockUser.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </span>
+                  </div>
+                  <div className="hidden sm:block text-left">
+                    <p className="text-sm font-medium text-gray-900">
+                      {mockUser.name}
+                    </p>
+                    <p className="text-xs text-gray-500">{mockUser.role}</p>
+                  </div>
+                </div>
+                <IconChevronDown className="h-4 w-4 text-gray-400" />
+              </motion.button>
+
+              <AnimatePresence>
+                {showUserMenu && (
+                  <motion.div
+                    className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2"
+                    variants={dropdownVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <div className="px-4 py-3 border-b border-gray-100">
+                      <p className="text-sm font-medium text-gray-900">
+                        {mockUser.name}
+                      </p>
+                      <p className="text-sm text-gray-500">{mockUser.email}</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        {mockUser.role} • {mockUser.branch}
+                      </p>
+                    </div>
+
+                    <div className="py-1">
+                      <motion.button
+                        className="flex items-center space-x-3 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        whileHover={{ x: 5 }}
+                      >
+                        <IconUser className="h-4 w-4" />
+                        <span>Mi Perfil</span>
+                      </motion.button>
+
+                      <motion.button
+                        className="flex items-center space-x-3 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        whileHover={{ x: 5 }}
+                      >
+                        <IconSettings className="h-4 w-4" />
+                        <span>Configuración</span>
+                      </motion.button>
+                    </div>
+
+                    <div className="border-t border-gray-100 py-1">
+                      <motion.button
+                        onClick={() => {
+                          setShowUserMenu(false);
+                          navigate("/login");
+                        }}
+                        className="flex items-center space-x-3 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                        whileHover={{ x: 5 }}
+                      >
+                        <IconLogout className="h-4 w-4" />
+                        <span>Cerrar Sesión</span>
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile Navigation Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden z-[90]"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    to={item.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-3 py-3 text-base font-medium font-body rounded-md transition-colors ${
-                      isActive(item.path)
-                        ? "text-primary-green bg-green-50"
-                        : "text-text-main hover:text-primary-green hover:bg-gray-50"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="pt-4 pb-3 border-t border-gray-200"
-              >
-                <div className="flex flex-col px-3 space-y-3">
-                  <Link
-                    to="/login"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-center px-4 py-3 text-sm font-medium font-body text-primary-green border border-primary-green rounded-md hover:bg-primary-green hover:text-white transition-colors"
-                  >
-                    Iniciar Sesión
-                  </Link>
-                  <Link
-                    to="/register"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-center px-4 py-3 text-sm font-medium font-body text-white bg-primary-green rounded-md hover:bg-green-600 transition-colors"
-                  >
-                    Registrarse
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 };

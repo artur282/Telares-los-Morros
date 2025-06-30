@@ -232,7 +232,80 @@ Los archivos optimizados se generarán en la carpeta `dist/`.
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
+## 🖥️ Sistema Cloud Implementado
 
+### Vistas Desarrolladas
+
+#### 🔐 Vista de Login
+
+- Formulario de autenticación con validación en tiempo real
+- Animaciones fluidas de entrada y hover effects
+- Opción "Recordar sesión" y recuperación de contraseña
+- Fondo decorativo con elementos textiles sutiles
+- Navegación automática al dashboard tras login exitoso
+
+#### 📝 Vista de Registro
+
+- Proceso de registro en 3 pasos con barra de progreso visual
+- **Paso 1**: Información personal (nombre, email, teléfono)
+- **Paso 2**: Información laboral (sucursal y cargo/rol)
+- **Paso 3**: Configuración de contraseña con validador de fortaleza
+- Selectores animados para sucursal y rol
+- Validaciones visuales en tiempo real
+
+#### 📊 Dashboard Cloud
+
+- **Header**: Logo, breadcrumbs, notificaciones y menú de usuario
+- **Sidebar**: Navegación principal con indicadores de estado del sistema
+- **Cards de Sucursales**: Estado en tiempo real de las 3 sucursales
+  - Villa de Cura (Sede Principal)
+  - San Juan de los Morros
+  - Maracay
+- **Diagrama de Red Interactivo**: Visualización de la red cloud con conexiones en tiempo real
+- **Panel de Métricas**: Almacenamiento, ancho de banda, uptime y respaldos
+- **Feed de Actividad**: Actividad reciente del sistema con timestamps
+
+### Características Técnicas
+
+#### 🎨 Diseño y UX
+
+- Paleta de colores basada en el logo de la empresa
+- Responsive design con mobile-first approach
+- Animaciones con Framer Motion para mejor experiencia
+- Componentes reutilizables con Aceternity UI patterns
+
+#### 🔧 Arquitectura
+
+- Estructura modular de componentes
+- Navegación con React Router DOM
+- Estado local con React Hooks
+- Utilidades CSS con Tailwind y clsx
+
+#### 📱 Responsive
+
+- Sidebar colapsable en dispositivos móviles
+- Grid adaptativo en el dashboard
+- Formularios optimizados para touch
+- Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
+
+### Navegación del Sistema
+
+```
+/ → Redirige a /login
+/login → Vista de inicio de sesión
+/register → Vista de registro
+/dashboard → Panel principal (post-autenticación)
+/* → Página 404 personalizada
+```
+
+### Datos Mock
+
+El sistema utiliza datos simulados para demostrar funcionalidad:
+
+- 3 sucursales con métricas en tiempo real
+- 47 usuarios activos simulados
+- Actividad del sistema con timestamps
+- Métricas de almacenamiento y red
 
 ---
 

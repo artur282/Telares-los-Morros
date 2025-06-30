@@ -23,47 +23,64 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+
+        // Telares Los Morros Brand Colors (Based on Logo)
         primary: {
-          DEFAULT: "#28a745", // Primary green from logo
-          foreground: "#ffffff",
-          green: "#28a745",
+          DEFAULT: "#4CAF50", // Verde Principal del logo
+          foreground: "#FFFFFF",
+          50: "#E8F5E8",
+          100: "#C8E6C9",
+          200: "#A5D6A7",
+          300: "#81C784",
+          400: "#66BB6A",
+          500: "#4CAF50",
+          600: "#43A047",
+          700: "#388E3C",
+          800: "#2E7D32",
+          900: "#1B5E20",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#2E7D32", // Verde Oscuro para textos destacados
+          foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "#ffc107", // Accent yellow/gold from logo
-          foreground: "#343a40",
-          yellow: "#ffc107",
+          DEFAULT: "#FF9800", // Naranja de la camisa en el logo
+          foreground: "#FFFFFF",
+          blue: "#2196F3", // Azul del uniforme en el logo
+          brown: "#8D6E63", // Marrón del pantalón en el logo
+        },
+
+        // Colores neutros
+        neutral: {
+          white: "#FFFFFF",
+          light: "#F5F5F5",
+          dark: "#424242",
+        },
+
+        // Colores del sistema
+        destructive: {
+          DEFAULT: "#F44336",
+          foreground: "#FFFFFF",
+        },
+        muted: {
+          DEFAULT: "#F5F5F5",
+          foreground: "#424242",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "#FFFFFF",
+          foreground: "#424242",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#FFFFFF",
+          foreground: "#424242",
         },
-        // Brand colors from specifications
-        "text-main": "#343a40", // Main text color
-        "bg-light": "#f8f9fa", // Light background
       },
       fontFamily: {
-        // Heading fonts
-        heading: ["Montserrat", "Poppins", "sans-serif"],
-        // Body text fonts
-        body: ["Lato", "Open Sans", "sans-serif"],
-        // Accent script font
-        script: ["Dancing Script", "cursive"],
+        // Telares Los Morros Typography
+        sans: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Poppins", "Inter", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "Consolas", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
